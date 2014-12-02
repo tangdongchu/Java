@@ -39,24 +39,24 @@ public class FirstTest {
         if (UIutil.IsLogin() == false)
         {
         	UIutil.UserLogin();
-        }
-        //如果登录失败，再试几次
-        for(int i=0;i<=100;i++){
-        	if (UIutil.IsExistElement("我 的"))
-            {
-            	break;
-            }
-            else
-            {
-            	if (UIutil.IsExistElement("知道了"))
-            			{
-            		Config.driver.findElement(By.name("知道了")).click();
-                	Config.driver.findElementByName("登录").click();
-            			}
-            	else
-            	{
-            		Thread.sleep(1000);
-            	}
+        	//如果登录失败，再试几次
+            for(int i=0;i<=100;i++){
+            	if (UIutil.IsExistElement("我 的"))
+                {
+                	break;
+                }
+                else
+                {
+                	if (UIutil.IsExistElement("知道了"))
+                			{
+                		Config.driver.findElement(By.name("知道了")).click();
+                    	Config.driver.findElementByName("登录").click();
+                			}
+                	else
+                	{
+                		Thread.sleep(1000);
+                	}
+                }
             }
         }
         //点击全部订单,进入订单详情再返回
