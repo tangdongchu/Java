@@ -1,8 +1,7 @@
-package com.ctrip.view.LearnTest;
+﻿package com.ctrip.view.LearnTest;
 
 import java.io.File;
 import java.net.URL;
-
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 

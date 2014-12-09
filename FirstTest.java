@@ -1,8 +1,7 @@
-package com.ctrip.view.LearnTest; 
+﻿package com.ctrip.view.LearnTest; 
 
 
 import io.appium.java_client.android.AndroidKeyCode;
-
 import java.util.List;
 import java.util.Set;
 
