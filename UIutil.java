@@ -60,7 +60,7 @@ public class UIutil {
         jse.executeScript("document.getElementById('word').value='输入法'");
         */
         textFieldsList.get(0).sendKeys("wwwwww");  
-        textFieldsList.get(1).sendKeys("good08");  
+        textFieldsList.get(1).sendKeys("www");  
         Config.driver.findElementByName("登录").click(); 
     }
 }
