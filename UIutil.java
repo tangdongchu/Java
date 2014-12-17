@@ -81,11 +81,11 @@ public class UIutil {
         Document document = reader.read(file);// 读取XML文件
         Element root = document.getRootElement();// 得到根节点
         for (Iterator i = root.elementIterator("账户"); i.hasNext();) {
-            Element student = (Element) i.next();//遍历整个XML
-            if (student.attributeValue("id").equals("001")) {
+            Element account = (Element) i.next();//遍历整个XML
+            if (account.attributeValue("id").equals("001")) {
                 // 读取id=001的账号信息
-            	username = student.selectSingleNode("用户名").getText();
-            	password = student.selectSingleNode("密码").getText();
+            	username = account.selectSingleNode("用户名").getText();
+            	password = account.selectSingleNode("密码").getText();
                 break;
             }
         }
