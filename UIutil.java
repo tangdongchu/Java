@@ -1,4 +1,4 @@
-package com.ctrip.view.LearnTest;
+﻿package com.ctrip.view.LearnTest;
 
 
 import java.io.File;
@@ -19,9 +19,9 @@ import static org.junit.Assert.assertEquals;
 
 public class UIutil {
 	
-	private String username;
-	private String password;
-	//判断元素是否存在	
+    private String username;
+    private String password;
+    //判断元素是否存在	
     public boolean IsExistElement(String str)
     {
         try{
