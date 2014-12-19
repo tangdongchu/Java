@@ -37,7 +37,7 @@ public class UIutil {
             return false;
         }
     }
-  //寻找元素超时时间,单位s
+    //寻找元素超时时间,单位s
     public void TimeOutTryAgain(String str,int time) throws InterruptedException
     {
         for(int i=0;i<100;i++){
@@ -76,8 +76,9 @@ public class UIutil {
     {
     	//从XML读取用户名密码
     	SAXReader reader = new SAXReader();
-        String filePath = "D:/java file/student.xml";//设置文件路径
-        File file = new File(filePath);//创建file对象
+    	File classpathRoot = new File(System.getProperty("user.dir"));   
+    	File data = new File(classpathRoot, "data");
+        File file = new File(data, "UID.xml");//创建file对象
         Document document = reader.read(file);// 读取XML文件
         Element root = document.getRootElement();// 得到根节点
         for (Iterator i = root.elementIterator("账户"); i.hasNext();) {
