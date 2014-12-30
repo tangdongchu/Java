@@ -1,4 +1,4 @@
-package com.ctrip.view.LearnTest;
+﻿package com.ctrip.view.LearnTest;
 
 import java.io.File;
 import java.net.URL;
@@ -17,7 +17,7 @@ public class Config {
 	public void setUp() throws Exception {
 		
         //配置从XML读取appium参数
-		Config config = new Config();
+	Config config = new Config();
         String BrowserName = config.readxml("BrowserName");
         String platformName = config.readxml("PlatformName");
         String deviceName = config.readxml("DeviceName");
