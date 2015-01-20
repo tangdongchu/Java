@@ -19,13 +19,12 @@ public class TestBase {
 	Process P;
 	public void setUp() throws Exception {
 		//启动appium
-		try {
-       	 P= Runtime.getRuntime().exec("cmd /c start appium");
-            } 
-		catch (Exception e) 
-		    {
-           e.printStackTrace();
-            }
+		try{
+			P= Runtime.getRuntime().exec("cmd /c start appium");
+			}
+		catch (Exception e){
+			e.printStackTrace();
+			}
         //配置从XML读取appium参数
 		TestBase config = new TestBase();
         String BrowserName = config.readxml("BrowserName");
@@ -72,24 +71,22 @@ public class TestBase {
 		try {
         	Process process = Runtime.getRuntime().exec("cmd /c adb devices");
         	BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            String line = null;
+        	String line = null;
             while ((line = reader.readLine()) != null) 
                {
-            	if(line.endsWith("device"))
-            	{
+            	if(line.endsWith("device")){
             		String arr[] = line.split("\t");
             		DevicesID=arr[0];
-           	    }
+            		}
                }
             } 
-		catch (Exception e) 
-		{
+		catch (Exception e){
 			System.out.println("未找到设备，使用config配置的devices");
 			DevicesID = config.readxml("DeviceName");
             e.printStackTrace();
-        }
+            }
 		return DevicesID;
+		}
 	}
-}
 
 
