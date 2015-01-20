@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<appSettings>
+    <add key="PlatformName" value="Android" />
+    <add key="PlatformVersion" value="4.4" />
+    <add key="BrowserName" value="" />
+    <add key="DeviceName" value="071c7a07" />
+    <add key="ApkPath" value="D:\Ctrip_Wireless_View_V6.1_SIT8.1_PRODUCT.apk" />
+    <add key="BootstrapPort" value="" />
+    <add key="automationName" value="selendroid" />
+    <add key="appPackage" value="ctrip.android.view" />
+    <add key="appActivity" value=".home.CtripSplashActivity" />
+</appSettings>

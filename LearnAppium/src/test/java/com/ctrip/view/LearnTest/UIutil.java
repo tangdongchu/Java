@@ -1,33 +1,29 @@
-﻿package com.ctrip.view.LearnTest;
+package com.ctrip.view.LearnTest;
 
 
 import java.io.File;
-import java.io.FileWriter;
 import java.util.Iterator;
 import java.util.List;
 
 import org.dom4j.Document;
-import org.dom4j.DocumentException;
 import org.dom4j.Element;
-import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
-import org.dom4j.io.XMLWriter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import static org.junit.Assert.assertEquals;
 
-public class UIutil {
+public class UIutil extends TestBase{
 	
-    private String username;
-    private String password;
-    //判断元素是否存在	
-    public boolean IsExistElement(String str)
+	private String username;
+	private String password;
+	//判断元素是否存在	
+    public boolean IsExistElement (String str)
     {
         try{
         	
             Thread.sleep(3000);
-            WebElement el = Config.driver.findElement(By.name(str));  
+            WebElement el = driver.findElement(By.name(str));  
             if (el.isEnabled())
             {
                 return true;
@@ -52,7 +48,7 @@ public class UIutil {
     {
     if (IsExistElement("以后再说"))
     {
-    	Config.driver.findElement(By.name("以后再说")).click();
+    	driver.findElement(By.name("以后再说")).click();
     }
     }
     //判断是否登录
@@ -61,7 +57,7 @@ public class UIutil {
     	try{
         	
             Thread.sleep(3000);
-            WebElement el = Config.driver.findElement(By.name("登录/注册"));  
+            WebElement el = driver.findElement(By.name("登录/注册"));  
             if (el.isEnabled())
             {
                 return false;
@@ -90,9 +86,9 @@ public class UIutil {
                 break;
             }
         }
-    	WebElement el = Config.driver.findElement(By.name("登录/注册"));
+    	WebElement el = driver.findElement(By.name("登录/注册"));
     	el.click();
-        List<WebElement> textFieldsList = Config.driver.findElementsByClassName("android.widget.EditText");  
+        List<WebElement> textFieldsList = driver.findElementsByClassName("android.widget.EditText");  
         /*
         appium不支持中文输入 参考了robotium的以js方式为元素直接设置value的做法
                 利用Selenium中Webdriver执行js方法实现中文输入
@@ -101,13 +97,13 @@ public class UIutil {
         */
         textFieldsList.get(0).sendKeys(username);  
         textFieldsList.get(1).sendKeys(password);  
-        Config.driver.findElementByName("登录").click();
+        driver.findElementByName("登录").click();
     }
     // 验证页面标题
     public static void ValidatePageTitle(String expectedValue) throws Exception
     {
         Thread.sleep(3000);
-        List<WebElement> pageTitle =Config.driver.findElementsById("ctrip.android.view:id/common_titleview_text");
+        List<WebElement> pageTitle =driver.findElementsById("ctrip.android.view:id/common_titleview_text");
         assertEquals(expectedValue, pageTitle.get(0).getText());
     }
 

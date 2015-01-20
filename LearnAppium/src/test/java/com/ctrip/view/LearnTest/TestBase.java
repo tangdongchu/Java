@@ -1,6 +1,8 @@
-﻿package com.ctrip.view.LearnTest;
+package com.ctrip.view.LearnTest;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.Iterator;
 
@@ -12,15 +14,23 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import io.appium.java_client.android.AndroidDriver;
 
-public class Config {
+public class TestBase {
 	public static  AndroidDriver driver; 
+	Process P;
 	public void setUp() throws Exception {
-		
+		//启动appium
+		try {
+       	 P= Runtime.getRuntime().exec("cmd /c start appium");
+            } 
+		catch (Exception e) 
+		    {
+           e.printStackTrace();
+            }
         //配置从XML读取appium参数
-	Config config = new Config();
+		TestBase config = new TestBase();
         String BrowserName = config.readxml("BrowserName");
         String platformName = config.readxml("PlatformName");
-        String deviceName = config.readxml("DeviceName");
+        String deviceName = config.readDevicesID();
         String platformVersion = config.readxml("PlatformVersion");
         String app = config.readxml("ApkPath");
         String appPackage = config.readxml("appPackage");
@@ -55,6 +65,31 @@ public class Config {
 			}
 		return value;
 		}
+	//获取当前插入的设备的devices ID
+	public String readDevicesID() throws Exception {
+		TestBase config = new TestBase();
+		String DevicesID = null;
+		try {
+        	Process process = Runtime.getRuntime().exec("cmd /c adb devices");
+        	BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line = null;
+            while ((line = reader.readLine()) != null) 
+               {
+            	if(line.endsWith("device"))
+            	{
+            		String arr[] = line.split("\t");
+            		DevicesID=arr[0];
+           	    }
+               }
+            } 
+		catch (Exception e) 
+		{
+			System.out.println("未找到设备，使用config配置的devices");
+			DevicesID = config.readxml("DeviceName");
+            e.printStackTrace();
+        }
+		return DevicesID;
+	}
 }
 
 
